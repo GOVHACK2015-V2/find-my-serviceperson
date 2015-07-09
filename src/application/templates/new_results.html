@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+
+	<title>Find My Serviceman</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+
+	<script>
+		function showTextarea(){
+			document.getElementById('anyonelink').style.display = 'none';
+			document.getElementById('anyonetext').style.display = 'block';
+		}
+		function showDateselect(){
+			document.getElementById('anytimelink').style.display = 'none';
+			document.getElementById('anytimeselect').style.display = 'block';
+		}
+		function showPersonselect(){
+			document.getElementById('personlink').style.display = 'none';
+			document.getElementById('personselect').style.display = 'block';
+		}
+	</script>
+	
+
+</head>
+
+<body>
+
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Find My Serviceman</a>
+		    </div>
+		    <div>
+		      <ul class="nav navbar-nav">
+		        <li><a href="#">Home</a></li>
+		        <li><a href="#">Results</a></li> 
+		        <li><a href="#">About Us</a></li> 
+		        <li><a href="#">About Data</a></li> 
+		        <li><a href="#">Blog</a></li> 
+		        <li><a href="#">Login</a></li> 
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+				
+
+		<div class="container-fluid resultsarea">
+			{% for person in  people %}
+				<div class="row">
+					<div class="col-md-12">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						
+					</div>
+					<div class="col-md-3">
+						<img src="{{ url_for('static', filename='images/empty_image.png') }}" alt="blog_image1"/>
+					</div>
+					<div class="col-md-5 resultdiv">
+					<span id="alignme">
+						<h3>{{ person.name }}</h3>
+						{% if person.units_ids != [] %}
+							<p>Units: {{ person.units_ids }}</p>
+						{% endif %}
+						<p>Conflict: {{ person.conflict }}</p>
+
+						{% if person.units_ids != [] %}
+							<form method="post" action="/network">
+								<input type="hidden" name="person_name" value="{{ person.name }}" />
+								<input type="hidden" name="person_units" value="{{ person.units_ids }}" />
+								<input type="submit" value="Show Map"/>
+							</form>
+						{% endif %}
+
+<!-- 					TODO rest of these things
+						<p>Search results for:</p>
+						<p><span id="greentext">{{ name }}</span> who served in {{ year }} as a {{ rank }}</p>
+						<p>Unit: 22nd Australian Infantry Battalion</p>
+						<p>Service: Australian Army</p>
+						<p>Conflict: First World War, 1914-1918</p>
+						<p>Date of Death: 03 October 1917 (Age: 27)</p>
+						<p>Place of Death: Belgium</p> -->
+					</span>
+					</div>
+					<div class="col-md-2">
+						
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+
+		<div class="container-fluid bottom">
+			<div class="row">
+				<footer class="footer">
+					
+				       <nav class="navbar navbar-default navbar-bottom" role="navigation">
+
+						 	
+						</nav>
+				</footer>
+			</div>
+		</div>
+
+	</body>
+</html>
