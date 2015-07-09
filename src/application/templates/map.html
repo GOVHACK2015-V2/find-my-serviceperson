@@ -4,21 +4,35 @@
 
   <head>
   
-  <!-- Javascript Library -->
-  <script src="../../static/js/jquery-2.1.4.min.js"></script>
-  <script src="../../static/js/arbor-v0.92/lib/arbor.js"></script>
-  <script src="../../static/js/arbor-v0.92/lib/arbor-tween.js"></script>
-  <script src="../../static/js/graphics.js"></script>
-  <script src="../../static/js/renderer.js"></script>
+
+  <script src="../../static/js/vis.js"></script>
+  <link href="../../static/css/vis.css" rel="stylesheet" type="text/css" />
+  <script src="../../static/js/display.js"></script>
+      <style type="text/css">
+        #mynetwork {
+            width: 1400px;
+            height: 1400px;
+            border: 1px solid lightgray;
+        }
+    </style>
   
   <head/>
 
   <body>
 
-    <canvas id="viewport" width="1280" height="720"></canvas>
-    <!-- Script to Insert Arbor -->
-    <script src="../../static/js/main.js"></script>
-  
-  <body/>
+<div id="mynetwork"></div>
 
+<script type="text/javascript">
+
+    var container = document.getElementById('mynetwork');
+    
+    console.log("calling");
+    var anythings = {{ data|safe }} ;
+    
+    
+    //console.log(anythings);
+    plantRoot(anythings, container);
+
+    </script>  
+  <body/>
 </html>
