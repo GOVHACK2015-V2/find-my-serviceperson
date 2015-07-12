@@ -7,10 +7,10 @@ Govhack 2015
 	https://cloud.google.com/appengine/downloads
 	
 2. Install Python dependencies
-
+```
 	cd find-my-serviceperson/src/
 	pip install -r requirements.txt -t lib/
-
+```
 3. Test locally
 	
 	dev_appserver.py src/
