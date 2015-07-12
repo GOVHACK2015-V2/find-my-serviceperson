@@ -12,9 +12,9 @@ Govhack 2015
 	pip install -r requirements.txt -t lib/
 ```
 3. Test locally
-	
+```
 	dev_appserver.py src/
-
+```
 4. Deploy
 
 	look it up, idk
