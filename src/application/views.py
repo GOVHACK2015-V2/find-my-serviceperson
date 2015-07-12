@@ -1,4 +1,4 @@
-import json, extraction, mo_extraction
+import json, extraction
 
 from flask import render_template, request
 
@@ -17,18 +17,18 @@ def index():
     return render_template('index.html')
 
 def network():
-    # a = extraction.prepare_json_stack() 
-    # return render_template('map.html', var=json.dumps(a))
-
     name    = request.form['person_name']
-    people  = mo_extraction.prepare_json_stack_2(name)
+    people  = extraction.prepare_json_stack(name)
 
-    # return render_template('map.html', data=json.dumps(extraction.prepare_json_stack()))
-    return render_template('map.html', data=people)
-    # return people
+    return render_template('map.html', data=json.dumps(people))
 
 def josh():
-    return 'dogs'
+    things = []
+
+    for x in request.args:
+        things.append(x)
+
+    return render_template('old_things.html')
 
 def results():
     if request.method == 'POST':
@@ -42,6 +42,6 @@ def results():
     return 'cats'
 
 def new_results():
-    people = mo_extraction.search_for_person('*')
+    people = extraction.search_for_person('Herbert')
 
     return render_template('new_results.html', people=people)

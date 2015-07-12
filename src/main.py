@@ -6,11 +6,10 @@ from flask import render_template
 # This could be done in init
 app = Flask(__name__, static_folder='application/static', template_folder='application/templates')
 
-app.add_url_rule('/', 'home', view_func=views.home)
+app.add_url_rule('/', 'index', view_func=views.index)
 app.add_url_rule('/results', 'results', view_func=views.results, methods=['GET','POST'])
-app.add_url_rule('/index', 'index', view_func=views.index)
 app.add_url_rule('/network', 'network', view_func=views.network, methods=['POST'])
-app.add_url_rule('/new_results', 'new_results', view_func=views.new_results)
+app.add_url_rule('/new_results', 'new_results', view_func=views.new_results, methods=['GET'])
 app.add_url_rule('/josh', 'josh', view_func=views.josh)
 
 # Errors

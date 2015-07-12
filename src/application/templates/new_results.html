@@ -65,11 +65,16 @@
 					<div class="col-md-5 resultdiv">
 					<span id="alignme">
 						<h3>{{ person.name }}</h3>
+						{% if person.rank != None %}
+							<p>Rank: {{ person.rank }}</p>
+						{% endif %}
 						{% if person.units_ids != [] %}
 							<p>Units: {{ person.units_ids }}</p>
 						{% endif %}
-						<p>Conflict: {{ person.conflict }}</p>
-
+						{% if person.conflict != None %}
+							<p>Conflict: {{ person.conflict }}</p>
+						{% endif %}
+						
 						{% if person.units_ids != [] %}
 							<form method="post" action="/network">
 								<input type="hidden" name="person_name" value="{{ person.name }}" />
