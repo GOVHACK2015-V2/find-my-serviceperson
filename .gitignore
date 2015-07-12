@@ -1,8 +1,8 @@
 *.pyc
 *.swp
 
-# Commented out for ease of use ... Shouldn't really be in the repo tho
-# lib/
+# Dependencies
+lib/
 
 # idea folder, created by IntelliJ?
 .idea/
